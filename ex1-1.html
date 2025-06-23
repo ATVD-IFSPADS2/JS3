@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Interação 1.1</title>
+  <script>
+    window.onload = function () {
+      document.getElementById("limpar").addEventListener("click", function () {
+        document.getElementById("entrada").value = "";
+      });
+
+      document.getElementById("mostrar").addEventListener("click", function () {
+        let texto = document.getElementById("entrada").value;
+        document.getElementById("saida").innerHTML = texto;
+      });
+    };
+  </script>
+</head>
+<body>
+  <input type="text" id="entrada"><br>
+  <input type="button" id="limpar" value="Limpar">
+  <input type="button" id="mostrar" value="Mostrar"><br>
+  <p id="saida"></p>
+</body>
+</html>

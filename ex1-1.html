@@ -1,25 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Interação 1.1</title>
-  <script>
-    window.onload = function () {
-      document.getElementById("limpar").addEventListener("click", function () {
-        document.getElementById("entrada").value = "";
-      });
+    <meta charset="UTF-8">
+    <title>Exercícios JS 1.1</title>
+    <script>
+        function limparCampo() {
+            document.getElementById("entrada").value = "";
+            document.getElementById("saida").textContent = "";
+        }
 
-      document.getElementById("mostrar").addEventListener("click", function () {
-        let texto = document.getElementById("entrada").value;
-        document.getElementById("saida").innerHTML = texto;
-      });
-    };
-  </script>
+        function mostrarTexto() {
+            const texto = document.getElementById("entrada").value;
+            document.getElementById("saida").textContent = texto;
+        }
+
+        function verificarNota() {
+            const nota = parseFloat(document.getElementById("nota").value);
+            const resultado = nota < 6 ? "Reprovado" : "Aprovado";
+            document.getElementById("mensagemNota").textContent = resultado;
+        }
+
+      
+        function calcularJuros() {
+            const saldo = parseFloat(document.getElementById("saldo").value);
+            const taxa = parseFloat(document.getElementById("juros").value) / 100;
+
+            document.getElementById("mes1").textContent = "Mês 1: R$ " + (saldo * (1 + taxa * 1)).toFixed(2);
+            document.getElementById("mes2").textContent = "Mês 2: R$ " + (saldo * (1 + taxa * 2)).toFixed(2);
+            document.getElementById("mes3").textContent = "Mês 3: R$ " + (saldo * (1 + taxa * 3)).toFixed(2);
+        }
+
+        // PRa não dar bug
+        window.onload = function () {
+            document.getElementById("limpar").onclick = limparCampo;
+            document.getElementById("mostrar").onclick = mostrarTexto;
+            document.getElementById("btnNota").onclick = verificarNota;
+            document.getElementById("btnJuros").onclick = calcularJuros;
+        }
+    </script>
 </head>
 <body>
-  <input type="text" id="entrada"><br>
-  <input type="button" id="limpar" value="Limpar">
-  <input type="button" id="mostrar" value="Mostrar"><br>
-  <p id="saida"></p>
+
+    <h2>Exercício 1.1.1 - Campo de Texto</h2>
+    <input type="text" id="entrada"><br>
+    <input type="button" id="limpar" value="Limpar">
+    <input type="button" id="mostrar" value="Mostrar"><br>
+    <p id="saida"></p>
+
+    <hr>
+
+    <h2>Exercício 1.1.3 - Verificar Nota</h2>
+    <input type="text" id="nota" placeholder="Digite a nota">
+    <input type="button" id="btnNota" value="Verificar">
+    <p id="mensagemNota"></p>
+
+    <hr>
+
+    <h2>Exercício 1.1.4 - Juros Simples</h2>
+    <input type="text" id="saldo" placeholder="Saldo inicial (R$)">
+    <input type="text" id="juros" placeholder="Taxa de juros (%)">
+    <input type="button" id="btnJuros" value="Calcular Juros">
+    
+    <h3>Resultados:</h3>
+    <p id="mes1"></p>
+    <p id="mes2"></p>
+    <p id="mes3"></p>
+
 </body>
 </html>
